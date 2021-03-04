@@ -33,6 +33,10 @@
 {{ "<!-- Main Stylesheet -->" | safeHTML }}
 {{ $css := resources.Get "css/style.css" | minify }}
 <link href="{{ $css.Permalink }}" rel="stylesheet" media="screen"/>
+
+{{ "<!-- Paytrail Stylesheet -->" | safeHTML }}
+{{ $cssPaytrail := resources.Get "css/paytrail.css" | minify }}
+<link href="{{ $cssPaytrail.Permalink }}" rel="stylesheet" media="screen"/>
   
 {{ "<!-- ** JS Plugins Needed for the Project ** -->" | safeHTML }}
 
