@@ -33,6 +33,10 @@
 {{ "<!-- Main Stylesheet -->" | safeHTML }}
 {{ $css := resources.Get "css/style.css" | minify }}
 <link href="{{ $css.Permalink }}" rel="stylesheet" media="screen"/>
+
+{{ "<!-- Paytrail Stylesheet -->" | safeHTML }}
+{{ $cssPaytrail := resources.Get "css/paytrail.css" | minify }}
+<link href="{{ $cssPaytrail.Permalink }}" rel="stylesheet" media="screen"/>
   
 {{ "<!-- ** JS Plugins Needed for the Project ** -->" | safeHTML }}
 
@@ -49,5 +53,11 @@
 <script src="{{ `plugins/match-height/jquery.matchHeight-min.js` | absURL }}"></script>
 
 {{ template "_internal/google_analytics.html" . }}
+  
+{{ if templates.Exists ( printf "partials/overrides/header.html" ) }}
+  {{ partial "partials/overrides/header.html" . }}
+{{ else }}
+  {{ "<!-- create /layouts/partials/overrides/header.html in your own theme or root directory to add your custom content here -->" | safeHTML }}
+{{ end }}
 
 </head>
